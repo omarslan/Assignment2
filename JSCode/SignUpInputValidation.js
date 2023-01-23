@@ -12,14 +12,14 @@ function emailValidation(emailInput) {
     }
 
     else if (emailInput.length < 5 || emailInput.length > 12) {
-        change.innerHTML="Length should be between 5 and 12";
+        change.innerHTML = "Length should be between 5 and 12";
     }
 }
 
 function userIDValidation() {
     var len = document.getElementById("userID").value;
     var change = document.getElementById("line1");
-    // len.contains("*");
+ 
     if (len.length == 0) {
         change.innerHTML="Please fill in the textbox";
     }
