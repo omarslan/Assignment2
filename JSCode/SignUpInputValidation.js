@@ -27,7 +27,7 @@ function userIDValidation() {
         change.innerHTML="Length should be between 5 and 12";
     }
     else if (len.length > 4 && len.length < 12){
-        change.innerHTML = "Youre going good";
+        change.innerHTML = "Success";
     }
     if(checkEnter(e)){
 

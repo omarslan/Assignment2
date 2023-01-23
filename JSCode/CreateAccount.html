@@ -6,16 +6,14 @@
             .header {
                 background-color:blanchedalmond;
                 display:flex;
-                justify-content:space-between;
-                flex-wrap:wrap;
+                /*justify-content:space-between;
+                flex-wrap:wrap;*/
             }
             .box {
                 background-color:orange;
-                width:36%;
-                height:88%;
-                position:absolute;
-                top:5%;
-                right:31%;
+                position: relative;
+                margin-left: 32%;
+          
             }
             button {
                 height:25px;
@@ -24,7 +22,7 @@
             .lname {
                 font-size:20px;
                 color:blue;
-                text-align:center;
+
             }
             #emailbox {
                 position:relative;
@@ -47,8 +45,13 @@
                 font-family: Cambria, serif;
                 color:white;
                 text-align:center;
-                height:8.8%
+                
             }
+            #line1 {
+                font-size:10px;
+                
+            }
+            
             .backgroundimage {
                 background-image: url('..\images\img1.jpg');
                 position: absolute;
@@ -93,14 +96,13 @@
         <fieldset class="box">
             <h1 id ="signup">Sign Up</h1>
 			<form class="lname" action="LogInPage.html">
-                <div>
-                    <label>UserID</label>
-                    <input type="text" id="userID" name="userIDName" oninput="return userIDValidation()" onkeypress="checkEnter(event)" required><span>&emsp13;</span>
-
-                    <label>Password</label>
+                <label>UserID</label>
+                <input type="text" id="userID" name="userIDName" oninput="return userIDValidation()" onkeypress="checkEnter(event)" required><span>&emsp13;</span>
+                
+                <label>Password</label>
                     <input type="password" required><span></span>   
-                    <p id="line1"></p>
-                </div>
+                    <p style="margin-right: 50%; "id="line1"></p>
+                    <p style="margin-left: 50%" id="line1"></p>
                 
                 <label id="email">Email</label>
                 <input type="email" id="emailbox" name="emailInput" required><span>&emsp13;&emsp13;&emsp13;&emsp13;</span>
