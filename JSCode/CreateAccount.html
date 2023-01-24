@@ -84,10 +84,10 @@
         <img src="..\images\img1.jpg" class = "backgroundimage" alt="Photo">
         <fieldset class="box">
             <h1 id ="signup">Sign Up</h1>
-			<form class="lname" onsubmit="controlSubmitStatus()">
+			<form class="lname" onsubmit="return false" onsubmit="controlSubmitStatus()">
                 <div>
                     <label>UserID</label>
-                    <input type="text" id="userID" oninput="userIDValidation()" onkeypress="checkEnter(event)">
+                    <input type="text" id="userID" oninput="userIDValidation()">
                     
                     <label style="margin-left: 4px;">Password</label>
                     <input style="margin-left: 2px;" type="password" id="passwordID" oninput="passwordValidation()"><br>
@@ -107,31 +107,45 @@
                 <div>
                     <br><br><label style="margin-right: 11px;" id="name">Name</label>
                     <input style="margin-right:5px" type="text" id="nameID" oninput="return nameValidation()">
-                    <label style="margin-right: 0px;">Language</label>
-                    <input type="text" id="languageID" oninput="return languageValidation(this.value)"><br>
+                    <label style="margin-left: 10px;">Zipcode</label>
+                    <input type="text" id="zipCode" oninput="return zipCodeValid()"><br>
 
                     <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left;" id="nameStatus"></p> 
-                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right" id="languageStatus"></p>
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right;" id="zipCodeStatus"></p>
                 </div>
                 <center><div>
                     <br><br><label for="country" id ="countryID">Country</label>
-
-                    <select name="country" id="country" required>
+                    <select name="country" id="country">
                         <option value="">None</option>
-                        <option value="Netherlands">Netherlands</option>
+                        <option value="Austria">Austria</option>
                         <option value="Belgium">Belgium</option>
                         <option value="Germany">Germany</option>
                         <option value="France">France</option>
-                        <option value="Spain">Spain</option>
+                        <option value="Ireland">Ireland</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Poland">Poland</option>
                         <option value="Portugal">Portugal</option>
+                        <option value="Russia">Russian</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Switzerland">Switzerland</option>
                         <option value="Turkey">Turkey</option>
                     </select>
+
+                    <label style="margin-left: 20px;">Language</label>
+                    <select name="language" id="language">
+                        <option value="">None</option>
+                        <option value="Dutch">Dutch</option>
+                        <option value="English">English</option>
+                        <option value="French">French</option>
+                        <option value="German">German</option>
+                        <option value="Portugese">Portugese</option>
+                        <option value="Russian">Ruissian</option>
+                        <option value="Spanish">Spanish</option>
+                        <option value="Turkish">Turkish</option>
+                    </select>
                     
-                    <label style="margin-left: 20px;">Zipcode</label>
-                    <input type="text" id="zipCode" oninput="return zipCodeValid()"><br>
-                    
-                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="countryStatus"></p> 
-                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 6.5%" id="zipCodeStatus"></p>
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="countryStatus"></p>
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right" id="languageStatus"></p>
                 </div></center>
                 
                 <br><br><center><div oninput="return genderValidation()">
@@ -143,15 +157,15 @@
                         <input type="radio" name="gender">Female
                     </label>
                     <label id="unknown">
-                        <input type="radio" name="gender">Don't want to share
+                        <input type="radio" name="gender" checked/>Don't want to share
                     </label><br>
                     <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="genderStatus"></p> 
                 </div></center>
 
                 <center>
                     <br><br><label for="fname">About/Bio</label><br>
-                    <textarea rows="4" cols="50" maxlength="100" required>Optional to fill in.</textarea><br><br>
-                    <button class="btn" >Create Account</button><br><br>
+                    <textarea rows="4" cols="50" maxlength="100">Optional to fill in.</textarea><br><br>
+                    <button class="btn" onclick="controlSubmitStatus()">Create Account</button><br><br>
                 </center>
 			</form>
             <a href="../WebPages/LogInPage.html"><center>Log in</center></a>

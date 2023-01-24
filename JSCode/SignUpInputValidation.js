@@ -2,9 +2,18 @@ function controlSubmitStatus() {
     if (userIDValidation() && passwordValidation() &&
         emailValidation() && zipCodeValid() &&
         nameValidation() && languageValidation() &&
-        genderValidation() && countryValidation()) {
-            alert("zoort");
+        countryValidation()) {
+            alert("Success");
         }
+    else {
+        userIDValidation();
+        passwordValidation();
+        emailValidation();
+        zipCodeValid();
+        nameValidation();
+        languageValidation();
+        countryValidation();
+    }
 }
 
 function userIDValidation() {
@@ -25,12 +34,12 @@ function userIDValidation() {
     }
 }
 
-function passwordValidation(){
+function passwordValidation() {
     var pass = document.getElementById("passwordID").value;
     var txt = document.getElementById("passwordStatus");
    
-    if (len.length == 0) {
-        change.innerHTML = "This is a required field";
+    if (pass.length == 0) {
+        txt.innerHTML = "This is a required field";
         return false;
     }
     if(pass.length < 12) {
@@ -146,7 +155,11 @@ function zipCodeValid() {
     var zip = document.getElementById("zipCode").value;
     var txt = document.getElementById("zipCodeStatus");
 
-    if(validateZip(zip)) {
+    if (zip.length == 0) {
+        txt.innerHTML = "This is a required field";
+        return false;
+    }
+    else if(validateZip(zip)) {
         txt.innerHTML = "Looks good";
         return true;
     }
@@ -158,50 +171,40 @@ function zipCodeValid() {
         txt.innerHTML = "Looks good";
         return true;
     }
+    else {
+        txt.innerHTML = "Looks good!"
+        return true;
+    }
 }
 
 function validateZip(character) {
     var bol = true;
     var str = character;
-    for(let i = 0; i<str.length;i++){
+    for(let i = 0; i < str.length; i++){
         let char = str.charAt(i);
-        if(character.length > 6){
+        if(character.length > 6) {
             return false;
         }
-        else if(i==0 && !anyNumber(char)) {
+        else if(i == 0 && !anyNumber(char)) {
             return false;
         }
-        else if(i==1 && !anyNumber(char)) {
+        else if(i == 1 && !anyNumber(char)) {
            return false;
         }
-        else if(i==2 && !anyNumber(char)) {
+        else if(i == 2 && !anyNumber(char)) {
             return false;
         }
-        else if(i==3 && !anyNumber(char)) {
+        else if(i == 3 && !anyNumber(char)) {
             return false;
         }
-        else if(i==4 && !anyUppercase(char)) {
+        else if(i == 4 && !anyUppercase(char)) {
             return false;
         }
-        else if(i==5 && !anyUppercase(char)) {
+        else if(i == 5 && !anyUppercase(char)) {
             return false;
         }
         return true;
     }
-}
-
-function genderValidation() {
-    const btn = document.querySelector('#btn');
-    const radioButtons = document.querySelectorAll('input[name="gender"]');
-
-    for (const radioButton of radioButtons) {
-        if (radioButton.checked) {
-            output.innerHTML = "Looks good!";
-            return;
-        }
-    }
-    output.innerHTML = "This is a required field";
-
 }
 
 function countryValidation() {
