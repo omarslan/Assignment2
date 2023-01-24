@@ -99,7 +99,7 @@
                     <br><br><label style="margin-right: 11px;" id="email">Email</label>
                     <input style="margin-right: 17px" type="email" id="emailID" oninput="return emailValidation()">
                     <label style="margin-right: 2px;">Address</label>
-                    <input type="text"><br>
+                    <input type="text" id="addressID"><br>
 
                     <p style="float: left; font-size: 12px; max-width: 200px; text-align: left;" id="emailStatus"></p> 
                     <p style="float: right; font-size:12px; text-align: right">Optional field</p>
@@ -107,16 +107,16 @@
                 <div>
                     <br><br><label style="margin-right: 11px;" id="name">Name</label>
                     <input style="margin-right:5px" type="text" id="nameID" oninput="return nameValidation()">
-                    <label style="margin-left: 10px;">Zipcode</label>
+                    <label style="margin-left: 11px; margin-right: 2px;">Zipcode</label>
                     <input type="text" id="zipCode" oninput="return zipCodeValid()"><br>
 
                     <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left;" id="nameStatus"></p> 
                     <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right;" id="zipCodeStatus"></p>
                 </div>
                 <center><div>
-                    <br><br><label for="country" id ="countryID">Country</label>
+                    <br><br><label>Country</label>
                     <select name="country" id="country">
-                        <option value="">None</option>
+                        <option value="None">None</option>
                         <option value="Austria">Austria</option>
                         <option value="Belgium">Belgium</option>
                         <option value="Germany">Germany</option>
@@ -133,7 +133,7 @@
 
                     <label style="margin-left: 20px;">Language</label>
                     <select name="language" id="language">
-                        <option value="">None</option>
+                        <option value="None">None</option>
                         <option value="Dutch">Dutch</option>
                         <option value="English">English</option>
                         <option value="French">French</option>
@@ -144,26 +144,20 @@
                         <option value="Turkish">Turkish</option>
                     </select>
                     
-                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="countryStatus"></p>
-                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right" id="languageStatus"></p>
+                    <br><p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 14%;" id="countryStatus"></p>
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right:14%" id="languageStatus"></p>
                 </div></center>
                 
                 <br><br><center><div oninput="return genderValidation()">
-                    <label for="fname">Gender</label><br>
-                    <label id="male">
-                        <input type="radio" name="gender">Male
-                    </label>
-                    <label id="female">
-                        <input type="radio" name="gender">Female
-                    </label>
-                    <label id="unknown">
-                        <input type="radio" name="gender" checked/>Don't want to share
-                    </label><br>
+                    <label for="gender">Gender</label><br>
+                    <label id="male"><input type="radio" name="gender">Male</label>
+                    <label id="female"><input type="radio" name="gender">Female</label>
+                    <label id="unknown"><input type="radio" name="gender" checked/>Don't want to share</label><br>
                     <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="genderStatus"></p> 
                 </div></center>
 
                 <center>
-                    <br><br><label for="fname">About/Bio</label><br>
+                    <br><br><label for="bio">About/Bio</label><br>
                     <textarea rows="4" cols="50" maxlength="100">Optional to fill in.</textarea><br><br>
                     <button class="btn" onclick="controlSubmitStatus()">Create Account</button><br><br>
                 </center>

@@ -1,18 +1,52 @@
 function controlSubmitStatus() {
-    if (userIDValidation() && passwordValidation() &&
-        emailValidation() && zipCodeValid() &&
-        nameValidation() && languageValidation() &&
-        countryValidation()) {
-            alert("Success");
+    var isProperlyFilledIn = true;
+    if (!userIDValidation()) {
+        isProperlyFilledIn = false;
+    }
+    if (!passwordValidation()) {
+        isProperlyFilledIn = false;
+    }
+    if (!emailValidation()) {
+        isProperlyFilledIn = false;
+    }
+    if (!zipCodeValid()) {
+        isProperlyFilledIn = false;
+    }
+    if (!nameValidation()) {
+        isProperlyFilledIn = false;
+    }
+    if (!languageValidation()) {
+        isProperlyFilledIn = false;
+    }
+    if (!countryValidation()) {
+        isProperlyFilledIn = false;
+    }
+    if (isProperlyFilledIn) {
+        alert("User ID: " + document.getElementById("userID").value +
+            "\nPassword: " + document.getElementById("passwordID").value +
+            "\nEmail: " + document.getElementById("emailID").value +
+            "\nAddress: " + document.getElementById("addressID").value +
+            "\nZIP Code: " + document.getElementById("zipCode").value +
+            "\nName: " + document.getElementById("nameID").value +
+            "\nGender: " + genderGetter() +
+            "\nLanguage: " + document.getElementById("language").value +
+            "\nCountry: " + document.getElementById("country").value);
+    }
+}
+
+function genderGetter() {
+    var radios = document.getElementsByName('gender');
+    for (var i = 0; i < radios.length; i++) {
+        if (radios[i].checked) {
+            switch (i) {
+                case 0:
+                    return "Male";
+                case 1:
+                    return "Female";
+                case 2:
+                    return "Don't want to share";
+            }
         }
-    else {
-        userIDValidation();
-        passwordValidation();
-        emailValidation();
-        zipCodeValid();
-        nameValidation();
-        languageValidation();
-        countryValidation();
     }
 }
 
@@ -141,14 +175,27 @@ function nameValidation() {
 }
 
 function languageValidation(language) {
+    var languageChoice = document.getElementById("language").value;
     var txt = document.getElementById("languageStatus");
 
-    if (language.length > 0) {
-        txt.innerHTML = "Looks good!";
-        return true;
+    if (languageChoice == "None") {
+        txt.innerHTML = "This is a required field";
+        return false;
     }
-    txt.innerHTML = "This is a required field";
-    return false;
+    txt.innerHTML = "Looks good!";
+    return true;
+}
+
+function countryValidation() {
+    var countryChoice = document.getElementById("country").value;
+    var txt = document.getElementById("countryStatus");
+
+    if (countryChoice == "None") {
+        txt.innerHTML = "This is a required field";
+        return false;
+    }
+    txt.innerHTML = "Looks good!";
+    return true;
 }
 
 function zipCodeValid() {
@@ -205,10 +252,6 @@ function validateZip(character) {
         }
         return true;
     }
-}
-
-function countryValidation() {
-    
 }
 
 function anyUppercase(character) {
