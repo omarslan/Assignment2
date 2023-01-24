@@ -87,13 +87,13 @@
 			<form class="lname" onsubmit="controlSubmitStatus()">
                 <div>
                     <label>UserID</label>
-                    <input type="text" id="userID" oninput="userIDValidation()" onkeypress="checkEnter(event)" required>
+                    <input type="text" id="userID" oninput="userIDValidation()" onkeypress="checkEnter(event)">
                     
                     <label style="margin-left: 4px;">Password</label>
-                    <input style="margin-left: 2px;" type="password" id="passwordID" oninput="passwordValidation()" required><br>
+                    <input style="margin-left: 2px;" type="password" id="passwordID" oninput="passwordValidation()"><br>
                     
-                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="userIDStatus"></p> 
-                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 5%" id="passwordStatus"></p>
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left;" id="userIDStatus"></p> 
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right;" id="passwordStatus"></p>
                 </div>
                 <div>
                     <br><br><label style="margin-right: 11px;" id="email">Email</label>
@@ -101,16 +101,17 @@
                     <label style="margin-right: 2px;">Address</label>
                     <input type="text"><br>
 
-                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="emailStatus"></p> 
+                    <p style="float: left; font-size: 12px; max-width: 200px; text-align: left;" id="emailStatus"></p> 
+                    <p style="float: right; font-size:12px; text-align: right">Optional field</p>
                 </div>
                 <div>
                     <br><br><label style="margin-right: 11px;" id="name">Name</label>
-                    <input style="margin-right:5px" type="text" id="nameID" oninput="return nameValidation()" required>
+                    <input style="margin-right:5px" type="text" id="nameID" oninput="return nameValidation()">
                     <label style="margin-right: 0px;">Language</label>
                     <input type="text" id="languageID" oninput="return languageValidation(this.value)"><br>
 
-                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="nameStatus"></p> 
-                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 5%" id="languageStatus"></p>
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left;" id="nameStatus"></p> 
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right" id="languageStatus"></p>
                 </div>
                 <center><div>
                     <br><br><label for="country" id ="countryID">Country</label>
@@ -127,18 +128,24 @@
                     </select>
                     
                     <label style="margin-left: 20px;">Zipcode</label>
-                    <input type="text" id="zipCode" oninput="return zipCodeValid()" required>
+                    <input type="text" id="zipCode" oninput="return zipCodeValid()"><br>
                     
                     <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="countryStatus"></p> 
-                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 5%" id="zipCodeStatus"></p>
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 6.5%" id="zipCodeStatus"></p>
                 </div></center>
                 
-                <br><br><center><div>
+                <br><br><center><div oninput="return genderValidation()">
                     <label for="fname">Gender</label><br>
-                    <label id = "male"><input type="radio" name="gender">Male</label>
-                    <label id = "female"><input type="radio" name="gender">Female</label>
-                    <label id = "unknown"><input type="radio" name="gender">Don't want to share</label><br>
-                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="userIDStatus"></p> 
+                    <label id="male">
+                        <input type="radio" name="gender">Male
+                    </label>
+                    <label id="female">
+                        <input type="radio" name="gender">Female
+                    </label>
+                    <label id="unknown">
+                        <input type="radio" name="gender">Don't want to share
+                    </label><br>
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="genderStatus"></p> 
                 </div></center>
 
                 <center>

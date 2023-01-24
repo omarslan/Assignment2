@@ -1,8 +1,8 @@
 function controlSubmitStatus() {
-    if (userIDValidation() &&
-        passwordValidation() &&
-        emailValidation() &&
-        zipCodeValid()) {
+    if (userIDValidation() && passwordValidation() &&
+        emailValidation() && zipCodeValid() &&
+        nameValidation() && languageValidation() &&
+        genderValidation() && countryValidation()) {
             alert("zoort");
         }
 }
@@ -28,25 +28,29 @@ function userIDValidation() {
 function passwordValidation(){
     var pass = document.getElementById("passwordID").value;
     var txt = document.getElementById("passwordStatus");
-    
+   
+    if (len.length == 0) {
+        change.innerHTML = "This is a required field";
+        return false;
+    }
     if(pass.length < 12) {
-        txt.innerHTML = "Minimum 12 characters required";
+        txt.innerHTML = "Minimum 12 characters is required";
         return false;
     }
     else if(!anyNumber(pass)) {
-        txt.innerHTML = "You don't have any number";
+        txt.innerHTML = "Minimum 1 number is required";
         return false;
     }
     else if (!anyUppercase(pass)) {
-        txt.innerHTML = "You don't have any capital letter";
+        txt.innerHTML = "Minimum 1 capital letter is required";
         return false;
     }
     else if (!anyLowercase(pass)) {
-        txt.innerHTML = "You don't have any lowercase letter";
+        txt.innerHTML = "Minimum 1 lowercase letter is required";
         return false;
     }
     else if (!anySpecialCase(pass)) {
-        txt.innerHTML = "You don't have any special letter";
+        txt.innerHTML = "Minimum 1 special character is required";
         return false;
     }
     else if (pass.length < 14) {
@@ -67,7 +71,7 @@ function emailValidation() {
         return false;
     }
     else if (!inputEmailAddress.includes("@")) {
-        change.innerHTML = "Input should contain @ character";
+        change.innerHTML = "@ character missing";
         return false;
     }
     else if (inputEmailAddress.indexOf("@") == inputEmailAddress.length - 1) {
@@ -83,7 +87,7 @@ function emailValidation() {
         return false;
     }
     else if (!inputEmailAddress.includes(".com")) {
-        change.innerHTML = "Mail address ends with .com";
+        change.innerHTML = "Mail address should end with .com";
         return false;
     }
     else if (inputEmailAddress.includes(" ")) {
@@ -110,11 +114,21 @@ function nameValidation() {
     var name = document.getElementById("nameID").value;
     var txt = document.getElementById("nameStatus");
 
-    if (anyLowercase() || anyUppercase()) {
-        txt.innerHTML = "Looks good!";
-        return true;
+    if (name.length == 0) {
+        txt.innerHTML = "This is a required field";
+        return false;
     }
-    return false;
+
+    for (var i = 0; i < name.length; i++) {
+        var charASCIICode = name.charCodeAt(i);
+        if (!((charASCIICode >= 97 && charASCIICode <= 122) || (charASCIICode >= 65 && charASCIICode <= 90))) {
+            txt.innerHTML = "Name should only contain letters";
+            return false;
+        }
+    }
+
+    txt.innerHTML = "Looks good!";
+    return true;
 }
 
 function languageValidation(language) {
@@ -124,7 +138,7 @@ function languageValidation(language) {
         txt.innerHTML = "Looks good!";
         return true;
     }
-    txt.innerHTML = "This field is required";
+    txt.innerHTML = "This is a required field";
     return false;
 }
 
@@ -134,12 +148,15 @@ function zipCodeValid() {
 
     if(validateZip(zip)) {
         txt.innerHTML = "Looks good";
+        return true;
     }
     else if(!validateZip(zip)) {
         txt.innerHTML = "Looks good";
+        return true;
     }
     else if(zip.length > 6) {
         txt.innerHTML = "Looks good";
+        return true;
     }
 }
 
@@ -173,11 +190,22 @@ function validateZip(character) {
     }
 }
 
-function makeItRequired() {
-    var input = document.getElementById("gender").value;
-    var change = document.getElementById("sex");
+function genderValidation() {
+    const btn = document.querySelector('#btn');
+    const radioButtons = document.querySelectorAll('input[name="gender"]');
+
+    for (const radioButton of radioButtons) {
+        if (radioButton.checked) {
+            output.innerHTML = "Looks good!";
+            return;
+        }
+    }
+    output.innerHTML = "This is a required field";
+
+}
+
+function countryValidation() {
     
-    sex.innerHTML = "No sex provided";
 }
 
 function anyUppercase(character) {
