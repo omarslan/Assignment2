@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="SignUpInputValidation.js"></script>
+        <script src="../Tracker/Tracker.js"></script>
+        <style>
+            .header {
+                background-color:blanchedalmond;
+                display:flex;
+            }
+            .box {
+                background-color:orange;
+                position: relative;
+                margin-left: 32%;
+                margin-top: 2%;
+            }
+            button {
+                height:25px;
+                width:46%;
+            }
+            .lname {
+                font-size:20px;
+                color:blue;
+            }
+            #unknown {
+                font-size:smaller;
+            }
+            #male {
+                font-size:smaller;
+            }
+            #female {
+                font-size:smaller;
+            }
+            #signup {
+                font-family: Cambria, serif;
+                color:white;
+                text-align:center;
+            }
+            .backgroundimage {
+                background-image: url('..\images\img1.jpg');
+                position: absolute;
+                width:100%;
+                height:100%;
+                top:0px;
+                left:0%;
+            }
+            .btn {
+                -webkit-border-radius: 24;
+                -moz-border-radius: 24;
+                border-radius: 24px;
+                font-family: Arial;
+                color: #ffffff;
+                font-size: 20px;
+                background: #3498db;
+                padding: 10px 30px 35px 30px;
+                border: solid #1f628d 3px;
+                text-decoration: none;
+            }
+            .btn:hover {
+                background: #3cb0fd;
+                background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+                background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+                text-decoration: none;
+            }
+            .bottomPart {
+                text-align:center;
+            }
+            textarea {
+                max-width: 490px;
+                min-width: 300px;
+                max-height: 50px;
+            }
+        </style>
+    </head>
+    <body class="header" onload="mouseClickTracker()">
+        <div id="tracker">
+            <p id="trackerInside"></p>
+            <p id="trackerInside2"></p>
+            <p id="trackerInside3"></p>
+        </div>
+        <img src="..\images\img1.jpg" class = "backgroundimage" alt="Photo">
+        <fieldset class="box">
+            <h1 id ="signup">Sign Up</h1>
+			<form class="lname" onsubmit="controlSubmitStatus()">
+                <div>
+                    <label>UserID</label>
+                    <input type="text" id="userID" oninput="userIDValidation()" onkeypress="checkEnter(event)" required>
+                    
+                    <label style="margin-left: 4px;">Password</label>
+                    <input style="margin-left: 2px;" type="password" id="passwordID" oninput="passwordValidation()" required><br>
+                    
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="userIDStatus"></p> 
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 5%" id="passwordStatus"></p>
+                </div>
+                <div>
+                    <br><br><label style="margin-right: 11px;" id="email">Email</label>
+                    <input style="margin-right: 17px" type="email" id="emailID" oninput="return emailValidation()">
+                    <label style="margin-right: 2px;">Address</label>
+                    <input type="text"><br>
+
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="emailStatus"></p> 
+                </div>
+                <div>
+                    <br><br><label style="margin-right: 11px;" id="name">Name</label>
+                    <input style="margin-right:5px" type="text" id="nameID" oninput="return nameValidation()" required>
+                    <label style="margin-right: 0px;">Language</label>
+                    <input type="text" id="languageID" oninput="return languageValidation(this.value)"><br>
+
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="nameStatus"></p> 
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 5%" id="languageStatus"></p>
+                </div>
+                <center><div>
+                    <br><br><label for="country" id ="countryID">Country</label>
+
+                    <select name="country" id="country" required>
+                        <option value="">None</option>
+                        <option value="Netherlands">Netherlands</option>
+                        <option value="Belgium">Belgium</option>
+                        <option value="Germany">Germany</option>
+                        <option value="France">France</option>
+                        <option value="Spain">Spain</option>
+                        <option value="Portugal">Portugal</option>
+                        <option value="Turkey">Turkey</option>
+                    </select>
+                    
+                    <label style="margin-left: 20px;">Zipcode</label>
+                    <input type="text" id="zipCode" oninput="return zipCodeValid()" required>
+                    
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="countryStatus"></p> 
+                    <p style= "float: right; font-size: 12px; max-width: 200px; text-align: right; margin-right: 5%" id="zipCodeStatus"></p>
+                </div></center>
+                
+                <br><br><center><div>
+                    <label for="fname">Gender</label><br>
+                    <label id = "male"><input type="radio" name="gender">Male</label>
+                    <label id = "female"><input type="radio" name="gender">Female</label>
+                    <label id = "unknown"><input type="radio" name="gender">Don't want to share</label><br>
+                    <p style= "float: left; font-size: 12px; max-width: 200px; text-align: left; margin-left: 5%;" id="userIDStatus"></p> 
+                </div></center>
+
+                <center>
+                    <br><br><label for="fname">About/Bio</label><br>
+                    <textarea rows="4" cols="50" maxlength="100" required>Optional to fill in.</textarea><br><br>
+                    <button class="btn" >Create Account</button><br><br>
+                </center>
+			</form>
+            <a href="../WebPages/LogInPage.html"><center>Log in</center></a>
+		</fieldset>
+    </body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .header {
+                color: white;
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+            }
+            .box {
+                text-align: center;
+                position: absolute;
+                top: 14%;
+                right: 13%;
+            }
+            .backgroundimage {
+                background-image: url('..\images\img6.jpg');
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0%;
+                left: 0%;
+            }
+            button {
+                height: 25px;
+                width: 33%;
+            }
+            .btn {
+                background: #4367e0;
+                background-image: -webkit-linear-gradient(top, #4367e0, #009dff);
+                background-image: -moz-linear-gradient(top, #4367e0, #009dff);
+                background-image: -ms-linear-gradient(top, #4367e0, #009dff);
+                background-image: -o-linear-gradient(top, #4367e0, #009dff);
+                background-image: linear-gradient(to bottom, #4367e0, #009dff);
+                -webkit-border-radius: 60;
+                -moz-border-radius: 60;
+                border-radius: 60px;
+                font-family: Arial;
+                color: #ffffff;
+                font-size: 26px;
+                padding: 0.5% 30px 32px 30px;
+                border: solid #080808 3px;
+                text-decoration: none;
+            }
+
+            .btn:hover {
+                background: #39cddb;
+                background-image: -webkit-linear-gradient(top, #39cddb, #040fd6);
+                background-image: -moz-linear-gradient(top, #39cddb, #040fd6);
+                background-image: -ms-linear-gradient(top, #39cddb, #040fd6);
+                background-image: -o-linear-gradient(top, #39cddb, #040fd6);
+                background-image: linear-gradient(to bottom, #39cddb, #040fd6);
+                text-decoration: none;
+            }
+            .destination {
+                color: hsla(210, 85%, 15%, 0.849);
+                font-size: 30px;
+            }
+            .maps {
+                transition-duration: 10s;
+            }
+        </style>
+    </head>
+    <body class="header">
+        <img src="..\images\img6.jpg" class="backgroundimage" alt="Photo">
+        <fieldset class="box">
+            <h1 style="font-size: 90px; color: hsla(210, 85%, 15%, 0.849);">Choose a trip<br></h1>
+			<form method="post">
+				<label class = "destination">Start</label>
+                    <input style="font-size:20px" type="text" id = "emailbox"><span>&emsp13;&emsp13;&emsp13;&emsp13;</span>
+                    <label class="destination">Destination</label>
+                    <a class="maps" href="https://www.google.com/maps/dir/delft/eindhoven/@51.6685998,4.696368,9.37z/data=!4m13!4m12!1m5!1m1!1s0x47c5b5c3515f58fd:0x89b05ca3c54bd43d!2m2!1d4.3570677!2d52.0115769!1m5!1m1!1s0x47c6d91b5579c39f:0xf39ad2648164b998!2m2!1d5.4622897!2d51.4231423"><input style="font-size:20px" type="text"><span></span></a><br><br><br><br>
+			</form>
+            <a href="..\images\img7.png">
+                <button class="btn">GO</button><br><br><br>
+            </a>
+		</fieldset>
+    </body>
+</html>
